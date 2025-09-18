@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Tracker Extravaganza 🎉</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <style>
+        /* Bounce animation for dropdowns */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .bounce-on-change {
+            animation: bounce 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-3xl w-full">
+        <h1 class="text-4xl font-extrabold text-center text-purple-800 mb-6">🎈 Team Party Tracker 🎈</h1>
+       
+        
+        <div class="grid grid-cols-1 gap-4">
+            <!-- Yugant -->
+            <div class="border-2 border-purple-500 rounded-lg p-4 flex items-center space-x-4 hover:bg-purple-100 transition">
+                <img src="https://media.giphy.com/media/3o7aD2xNq4vA1LKB9K/giphy.gif" alt="Dancing Cat" class="w-16 h-16 rounded-full">
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-purple-700">Yugant’s Promotion Bash</h2>
+                    <p class="text-gray-700" id="yugant-status">Status: Abhi Toh Party Shuru Hogi! 🕺</p>
+                    <select id="yugant-select" onchange="updateStatus('yugant')" class="mt-2 border-2 border-purple-300 rounded-lg px-2 py-1 text-gray-700 bg-purple-50 hover:bg-purple-200 transition duration-200">
+                        <option value="Remaining">⏳ Remaining</option>
+                        <option value="Done">🎉 Done</option>
+                    </select>
+                    <button onclick="shootConfetti('purple')" class="mt-2 bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Party Hype!</button>
+                </div>
+            </div>
+            <!-- Vikash -->
+            <div class="border-2 border-blue-500 rounded-lg p-4 flex items-center space-x-4 hover:bg-blue-100 transition">
+                <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Party Llama" class="w-16 h-16 rounded-full">
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-blue-700">Vikash’s Promotion Fiesta</h2>
+                    <p class="text-gray-700" id="vikash-status">Status: Come On barbie, Lets go Party 💃</p>
+                    <select id="vikash-select" onchange="updateStatus('vikash')" class="mt-2 border-2 border-blue-300 rounded-lg px-2 py-1 text-gray-700 bg-blue-50 hover:bg-blue-200 transition duration-200">
+                        <option value="Remaining">⏳ Remaining</option>
+                        <option value="Done">🎉 Done</option>
+                    </select>
+                    <button onclick="shootConfetti('blue')" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Celebrate!</button>
+                </div>
+            </div>
+            <!-- Sanket -->
+            <div class="border-2 border-green-500 rounded-lg p-4 flex items-center space-x-4 hover:bg-green-100 transition">
+                <img src="https://media.giphy.com/media/26FPy3QZQqGtDcrja/giphy.gif" alt="Disco Dog" class="w-16 h-16 rounded-full">
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-green-700">Sanket’s Promotion Rager</h2>
+                    <p class="text-gray-700" id="sanket-status">Status: Abhi mzaa aayega na biduu 🔥</p>
+                    <select id="sanket-select" onchange="updateStatus('sanket')" class="mt-2 border-2 border-green-300 rounded-lg px-2 py-1 text-gray-700 bg-green-50 hover:bg-green-200 transition duration-200">
+                        <option value="Remaining">⏳ Remaining</option>
+                        <option value="Done">🎉 Done</option>
+                    </select>
+                    <button onclick="shootConfetti('green')" class="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Epic Vibes!</button>
+                </div>
+            </div>
+            <!-- Shruti -->
+            <div class="border-2 border-pink-500 rounded-lg p-4 flex items-center space-x-4 hover:bg-pink-100 transition">
+                <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Birthday Cake" class="w-16 h-16 rounded-full">
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-pink-700">Shruti’s Birthday Blowout</h2>
+                    <p class="text-gray-700" id="shruti-status">Status: Candle Ready, Cake Mangwayenge! 🎂</p>
+                    <select id="shruti-select" onchange="updateStatus('shruti')" class="mt-2 border-2 border-pink-300 rounded-lg px-2 py-1 text-gray-700 bg-pink-50 hover:bg-pink-200 transition duration-200">
+                        <option value="Remaining">⏳ Remaining</option>
+                        <option value="Done">🎉 Done</option>
+                    </select>
+                    <button onclick="shootConfetti('pink')" class="mt-2 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">Sing It!</button>
+                </div>
+            </div>
+            <!-- Harsh -->
+            <div class="border-2 border-yellow-500 rounded-lg p-4 flex items-center space-x-4 hover:bg-yellow-100 transition">
+                <img src="https://media.giphy.com/media/3o7btPCcdNniyf0ArS/giphy.gif" alt="Tech Sparkle" class="w-16 h-16 rounded-full">
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-yellow-700">Harsh’s New MacBook</h2>
+                    <p class="text-gray-700" id="harsh-status">Status: Ab hogi Unboxing 😜</p>
+                    <select id="harsh-select" onchange="updateStatus('harsh')" class="mt-2 border-2 border-yellow-300 rounded-lg px-2 py-1 text-gray-700 bg-yellow-50 hover:bg-yellow-200 transition duration-200">
+                        <option value="Remaining">⏳ Remaining</option>
+                        <option value="Done">🎉 Done</option>
+                    </select>
+                    <button onclick="shootConfetti('silver')" class="mt-2 bg-yellow-600 text-white px-4 py-2 rounded hover:bg-yellow-700">Show Off!</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Initialize JSConfetti
+        const confetti = new JSConfetti();
+
+        // Confetti explosion with custom colors
+        function shootConfetti(theme) {
+            let colors;
+            switch(theme) {
+                case 'purple': colors = ['#9F00FF', '#FFD700']; break; // Yugant: Purple + Gold
+                case 'blue': colors = ['#00B7EB', '#FFFFFF']; break; // Vikash: Blue + White
+                case 'green': colors = ['#00FF7F', '#FFFF00']; break; // Sanket: Green + Yellow
+                case 'pink': colors = ['#FF69B4', '#FFC1CC']; break; // Shruti: Pink + Light Pink
+                case 'silver': colors = ['#C0C0C0', '#87CEEB']; break; // Harsh: Silver + Sky Blue
+            }
+            confetti.addConfetti({
+                emojis: ['🎉', '🥳', '🎂', '💻', '🌟'],
+                confettiColors: colors,
+                confettiRadius: 6,
+                confettiNumber: 200
+            });
+        }
+
+        // Update party status and save to localStorage
+        function updateStatus(member) {
+            const select = document.getElementById(`${member}-select`);
+            const statusText = document.getElementById(`${member}-status`);
+            const status = select.value;
+
+            // Indian meme-style statuses
+            const statuses = {
+                        yugant: {
+                            Done: 'Status: Bhai, Level Up Hogaya! 🎉',
+                            Remaining: 'Status: Abhi Toh Party Shuru Hogi! 🕺'
+                        },
+                        vikash: {
+                            Done: 'Status: Bhaiya Ji Smilee 🎊',
+                            Remaining: 'Status: Come On barbie, Lets go Party 💃'
+                        },
+                        sanket: {
+                            Done: 'Status: Phli baar zindgi mai dhang ka kaam kiya hai 😎',
+                            Remaining: 'Status: Abhi mzaa aayega na biduu 🔥'
+                        },
+                        shruti: {
+                            Done: 'Status: Shruti Didi Ne Cake Kaat Diya! 🥳',
+                            Remaining: 'Status: Candle Ready, Cake Mangwayenge! 🎂'
+                        },
+                        harsh: {
+                            Done: 'Status: Beta ek zamana tha hum bhi gareeb hua krte the ',
+                            Remaining: 'Status: Ab hogi Unboxing 😜'
+                        }
+                    };
+
+            statusText.textContent = statuses[member][status];
+            localStorage.setItem(`${member}-party-status`, status);
+
+            // Add bounce animation on dropdown change
+            select.classList.add('bounce-on-change');
+            setTimeout(() => select.classList.remove('bounce-on-change'), 300);
+        }
+
+        // Load saved statuses from localStorage on page load
+        window.onload = function() {
+            ['yugant', 'vikash', 'sanket', 'shruti', 'harsh'].forEach(member => {
+                const savedStatus = localStorage.getItem(`${member}-party-status`);
+                if (savedStatus) {
+                    const select = document.getElementById(`${member}-select`);
+                    const statusText = document.getElementById(`${member}-status`);
+                    select.value = savedStatus;
+                    const statuses = {
+                        yugant: {
+                            Done: 'Status: Bhai, Level Up Hogaya! 🎉',
+                            Remaining: 'Status: Abhi Toh Party Shuru Hogi! 🕺'
+                        },
+                        vikash: {
+                            Done: 'Status: Bhaiya Ji Smilee 🎊',
+                            Remaining: 'Status: Come On barbie, Lets go Party 💃'
+                        },
+                        sanket: {
+                            Done: 'Status: Phli baar zindgi mai dhang ka kaam kiya hai 😎',
+                            Remaining: 'Status: Abhi mzaa aayega na biduu 🔥'
+                        },
+                        shruti: {
+                            Done: 'Status: Shruti Didi Ne Cake Kaat Diya! 🥳',
+                            Remaining: 'Status: Candle Ready, Cake Mangwayenge! 🎂'
+                        },
+                        harsh: {
+                            Done: 'Status: Beta ek zamana tha hum bhi gareeb hua krte the ',
+                            Remaining: 'Status: Ab hogi Unboxing 😜'
+                        }
+                    };
+                    statusText.textContent = statuses[member][savedStatus];
+                }
+            });
+        };
+    </script>
+</body>
+</html>
